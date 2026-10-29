@@ -5,7 +5,7 @@ import type { Profile } from '../content/types'
 import styles from './Hero.module.css'
 
 interface HeroProps {
-  profile: Pick<Profile, 'name' | 'greeting' | 'headline' | 'intro' | 'status' | 'heroImage'>
+  profile: Pick<Profile, 'name' | 'greeting' | 'headline' | 'intro' | 'status'>
 }
 
 export function Hero({ profile }: HeroProps) {
@@ -17,8 +17,7 @@ export function Hero({ profile }: HeroProps) {
       gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
         gsap
           .timeline({ defaults: { ease: 'power3.out' } })
-          .from(`.${styles.photo}`, { yPercent: 6, autoAlpha: 0, duration: 1.1 })
-          .from(`.${styles.line}`, { yPercent: 40, autoAlpha: 0, duration: 0.9, stagger: 0.1 }, 0.1)
+          .from(`.${styles.line}`, { yPercent: 40, autoAlpha: 0, duration: 0.9, stagger: 0.1 })
           .from(`.${styles.fade}`, { y: 16, autoAlpha: 0, duration: 0.7, stagger: 0.08 }, 0.45)
       })
     },
@@ -28,14 +27,6 @@ export function Hero({ profile }: HeroProps) {
   return (
     <section ref={root} id="inicio" aria-label="Apresentação" className={styles.hero}>
       <div className={styles.glow} aria-hidden="true" />
-      <img
-        className={styles.photo}
-        src={profile.heroImage.src}
-        alt={profile.heroImage.alt}
-        width={523}
-        height={903}
-        fetchPriority="high"
-      />
 
       <div className={styles.content}>
         <p className={`${styles.greeting} ${styles.fade}`}>{profile.greeting}</p>

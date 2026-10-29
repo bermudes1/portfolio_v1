@@ -68,8 +68,6 @@ export interface Profile {
   intro: string
   /** Linha curta ao lado do ponto aceso na abertura. */
   status: string
-  /** Recorte com fundo transparente, usado na abertura. */
-  heroImage: Photo
   aboutImage: Photo
   stats: Stat[]
   location: { label: string; timeZone: string }

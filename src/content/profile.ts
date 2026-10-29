@@ -14,7 +14,6 @@ export const profile: Profile = {
   headline: 'Estudo computação e trabalho com dados e IA.',
   intro: 'Ciência da Computação na PUC-Rio, agora em intercâmbio na TU Darmstadt.',
   status: 'Procurando estágio em tecnologia',
-  heroImage: { src: asset('felipe-recorte.webp'), alt: 'Felipe Bermudes' },
   aboutImage: {
     src: asset('felipe-mosel.jpg'),
     alt: 'Felipe sorrindo, apoiado num muro de pedra com um rio e uma cidade pequena ao fundo',

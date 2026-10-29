@@ -50,6 +50,5 @@ Cada componente tem o próprio CSS Module. As cores, fontes e tamanhos ficam em 
 ## Decisões
 
 - A fonte é a Archivo, variável na largura: os títulos usam a versão larga e o texto corrido a normal. Ela vem do npm via Fontsource, então o site não depende do Google Fonts.
-- A foto da abertura é um recorte com fundo transparente (`public/felipe-recorte.webp`), feito com o rembg a partir da foto original.
 - As animações usam GSAP com `matchMedia`. Se o sistema estiver com movimento reduzido, nada se mexe e o conteúdo já aparece no lugar.
 - O CI (`.github/workflows/ci.yml`) roda lint, formatação, tipos, testes e build em todo push e pull request. Na `main`, se tudo passar, o build vai para a branch `gh-pages`, que é a que o GitHub Pages serve.
