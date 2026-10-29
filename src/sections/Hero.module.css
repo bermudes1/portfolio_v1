@@ -10,8 +10,14 @@
   color: var(--ink-soft);
 }
 
-.name {
+.top {
+  display: grid;
+  gap: 2rem;
+  align-items: end;
   margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.name {
   font-size: var(--step-display);
   font-weight: 800;
   font-stretch: 75%;
@@ -28,6 +34,15 @@
 /* O sobrenome fica deslocado para a direita, quebrando o bloco alinhado. */
 .line + .line {
   padding-left: 0.6em;
+}
+
+.portrait {
+  width: min(16rem, 60%);
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: var(--rule);
+  filter: grayscale(1) contrast(1.05);
 }
 
 .footer {
@@ -60,6 +75,15 @@
 }
 
 @media (min-width: 60em) {
+  .top {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--gutter);
+  }
+
+  .portrait {
+    width: clamp(12rem, 18vw, 17rem);
+  }
+
   .footer {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: var(--gutter);

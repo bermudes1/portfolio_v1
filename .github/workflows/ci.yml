@@ -30,21 +30,25 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: 'true'
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: github.ref == 'refs/heads/main'
         with:
+          name: site
           path: dist
 
+  # Publica o build na branch gh-pages, que é a que o GitHub Pages serve.
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: check
     runs-on: ubuntu-latest
     permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      contents: write
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist

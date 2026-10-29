@@ -2,6 +2,9 @@ import type { Profile } from './types'
 
 const GITHUB = 'https://github.com/bermudes1'
 
+// Arquivos de public/ precisam do base path, que no GitHub Pages é /portfolio_v1/.
+const asset = (file: string) => `${import.meta.env.BASE_URL}${file}`
+
 // Todo o texto do site sai daqui. Para atualizar o portfólio, quase sempre
 // basta mexer neste arquivo.
 export const profile: Profile = {
@@ -13,6 +16,7 @@ export const profile: Profile = {
     'Estudo Ciência da Computação na PUC-Rio e estou em intercâmbio na TU Darmstadt. ' +
     'Trabalho com dados e IA, e passei pela base da computação escrevendo C ' +
     'até entender o que o sistema operacional faz com o meu código.',
+  portrait: { src: asset('felipe.jpg'), alt: 'Foto de Felipe Bermudes' },
   location: { label: 'Darmstadt, Alemanha', timeZone: 'Europe/Berlin' },
   about: [
     'Entrei na PUC-Rio em 2024 e a previsão de formatura é 2028.1. Desde 2025 ' +
@@ -71,8 +75,13 @@ export const profile: Profile = {
   ],
   award: {
     place: '3º',
-    title: '3º lugar no meu primeiro hackathon',
+    title: '3º lugar com o IAProva',
     date: 'outubro de 2025',
+    description: 'Foi o meu primeiro hackathon. O IAProva é o projeto que o time apresentou.',
+    photo: {
+      src: asset('hackathon.jpg'),
+      alt: 'Time do IAProva com os organizadores, em frente às telas que anunciam o terceiro lugar',
+    },
   },
   projects: [
     {

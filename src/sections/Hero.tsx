@@ -5,7 +5,7 @@ import type { Profile } from '../content/types'
 import styles from './Hero.module.css'
 
 interface HeroProps {
-  profile: Pick<Profile, 'name' | 'role' | 'status' | 'intro'>
+  profile: Pick<Profile, 'name' | 'role' | 'status' | 'intro' | 'portrait'>
 }
 
 export function Hero({ profile }: HeroProps) {
@@ -33,10 +33,20 @@ export function Hero({ profile }: HeroProps) {
       <p className={styles.role} data-reveal>
         {profile.role}
       </p>
-      <h1 className={styles.name}>
-        <span className={styles.line}>{first}</span>{' '}
-        <span className={styles.line}>{rest.join(' ')}</span>
-      </h1>
+      <div className={styles.top}>
+        <h1 className={styles.name}>
+          <span className={styles.line}>{first}</span>{' '}
+          <span className={styles.line}>{rest.join(' ')}</span>
+        </h1>
+        <img
+          className={styles.portrait}
+          src={profile.portrait.src}
+          alt={profile.portrait.alt}
+          width={960}
+          height={1200}
+          fetchPriority="high"
+        />
+      </div>
       <div className={styles.footer}>
         <p className={styles.status}>
           <span className={styles.dot} aria-hidden="true" />

@@ -33,13 +33,18 @@ export interface Project {
   links: Link[]
 }
 
+export interface Photo {
+  src: string
+  alt: string
+}
+
 export interface Award {
   place: string
   title: string
   date: string
   description?: string
-  /** Caminho relativo à pasta public/. Sem foto, o bloco aparece só com o texto. */
-  photo?: { src: string; alt: string }
+  /** Sem foto, o bloco aparece só com o texto. */
+  photo?: Photo
 }
 
 export interface SkillGroup {
@@ -54,6 +59,7 @@ export interface Profile {
   /** Linha curta ao lado do quadrado vermelho na abertura. */
   status: string
   intro: string
+  portrait: Photo
   location: { label: string; timeZone: string }
   about: string[]
   experience: Experience[]
