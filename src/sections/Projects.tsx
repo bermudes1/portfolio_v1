@@ -12,33 +12,43 @@ interface ProjectsProps {
 
 export function Projects({ projects, figures = {} }: ProjectsProps) {
   return (
-    <Section id="projetos" index="04" title="Projetos">
-      <ol role="list" className={styles.list}>
-        {projects.map((project, i) => (
-          <li key={project.slug} className={styles.project}>
-            <article aria-labelledby={`${project.slug}-title`} data-reveal>
-              <p className={styles.number} aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </p>
-              <h3 id={`${project.slug}-title`} className={styles.title}>
-                {project.title}
-              </h3>
-              <p className={styles.context}>{project.context}</p>
-              <p className={styles.summary}>{project.summary}</p>
-              <ul className={styles.highlights}>
-                {project.highlights.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              {figures[project.slug] && (
-                <div className={styles.figure}>{figures[project.slug]}</div>
-              )}
-              <div className={styles.footer}>
-                <TagList items={project.stack} label={`Tecnologias de ${project.title}`} />
-                <ul role="list" className={styles.links}>
-                  {project.links.map((link) => (
-                    <li key={link.href}>
-                      <a href={link.href} target="_blank" rel="noreferrer">
+    <Section
+      id="projetos"
+      index="04"
+      title="projetos"
+      lead="Trabalhos da faculdade e projetos pessoais. O código de todos está no GitHub."
+    >
+      <ul role="list" className={styles.grid}>
+        {projects.map((project, i) => {
+          const figure = figures[project.slug]
+
+          return (
+            <li key={project.slug} className={figure ? styles.featured : undefined} data-reveal>
+              <article aria-labelledby={`${project.slug}-title`} className={styles.card}>
+                <div className={styles.body}>
+                  <p className={styles.top}>
+                    <span className={styles.number}>{String(i + 1).padStart(2, '0')}</span>
+                    {project.context}
+                  </p>
+                  <h3 id={`${project.slug}-title`} className={styles.title}>
+                    {project.title}
+                  </h3>
+                  <p className={styles.summary}>{project.summary}</p>
+                  <ul className={styles.highlights}>
+                    {project.highlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className={styles.footer}>
+                    <TagList items={project.stack} label={`Tecnologias de ${project.title}`} />
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.link}
+                      >
                         {link.label}
                         <span className="visually-hidden">
                           {' '}
@@ -46,14 +56,15 @@ export function Projects({ projects, figures = {} }: ProjectsProps) {
                         </span>
                         <span aria-hidden="true"> ↗</span>
                       </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          </li>
-        ))}
-      </ol>
+                    ))}
+                  </div>
+                </div>
+                {figure && <div className={styles.figure}>{figure}</div>}
+              </article>
+            </li>
+          )
+        })}
+      </ul>
     </Section>
   )
 }

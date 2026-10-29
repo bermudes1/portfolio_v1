@@ -1,27 +1,34 @@
 :root {
-  /* Papel e tinta. O acento aparece pouco: estado "agora", o 3º lugar e o foco. */
-  --paper: #f2efe6;
-  --paper-deep: #e7e3d6;
-  --ink: #161513;
-  --ink-soft: #57534a;
-  --ink-faint: #8c877b;
-  --accent: #d93a1f;
+  /* Fundo quase preto puxado para o quente, para conversar com o laranja da abertura. */
+  --bg: #0e0c0b;
+  --surface: #171412;
+  --surface-raised: #201c19;
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.18);
 
-  --font-display: 'Bricolage Grotesque Variable', 'Arial Narrow', sans-serif;
-  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+  --text: #f5f0ea;
+  --text-soft: #b8aea4;
+  --text-faint: #7d746b;
+  --ink-on-hot: #1c0a05;
 
-  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+  --hot: #ff5a2c;
+  --amber: #ffa24a;
+  --red: #e2301d;
+  --gradient-hot: linear-gradient(135deg, var(--red) 0%, var(--hot) 52%, var(--amber) 100%);
+
+  --font: 'Archivo Variable', 'Arial', sans-serif;
+
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
-  --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.6rem);
-  --step-2: clamp(1.6rem, 1.35rem + 1.2vw, 2.4rem);
-  --step-3: clamp(2.4rem, 1.8rem + 3vw, 4.5rem);
-  --step-display: clamp(4rem, 1rem + 15vw, 15rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.4vw, 2.5rem);
+  --step-3: clamp(2.4rem, 1.7rem + 3.4vw, 4.75rem);
+  --step-hero: clamp(3.6rem, 1rem + 11vw, 11.5rem);
 
-  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
-  --max-width: 84rem;
-  --rule: 1px solid var(--ink);
-  --rule-soft: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  --gutter: clamp(1rem, 0.4rem + 2.8vw, 3rem);
+  --max-width: 80rem;
+  --radius: 12px;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-fast: 160ms;
+  --duration-fast: 180ms;
 }

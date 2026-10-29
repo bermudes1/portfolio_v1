@@ -1,0 +1,45 @@
+.band {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.item {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+}
+
+.value {
+  font-size: var(--step-3);
+  font-weight: 800;
+  font-stretch: 118%;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.label {
+  max-width: 16ch;
+  font-size: var(--step--1);
+  color: var(--text-soft);
+}
+
+@media (min-width: 48em) {
+  .list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .item + .item {
+    padding-left: clamp(1rem, 2vw, 2rem);
+    border-left: 1px solid var(--line);
+  }
+}

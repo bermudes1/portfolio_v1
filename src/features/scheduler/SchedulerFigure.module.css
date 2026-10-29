@@ -1,8 +1,4 @@
 .figure {
-  padding: 1rem;
-  background: var(--paper-deep);
-  border: var(--rule);
-  font-family: var(--font-mono);
   font-size: var(--step--1);
 }
 
@@ -10,25 +6,24 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .controlLabel {
-  color: var(--ink-soft);
+  font-weight: 600;
+  color: var(--text-soft);
 }
 
 .quanta {
   display: flex;
-  border: var(--rule);
+  padding: 0.2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
 }
 
 .quantum {
   position: relative;
   cursor: pointer;
-}
-
-.quantum + .quantum {
-  border-left: var(--rule);
 }
 
 .quantum input {
@@ -40,8 +35,10 @@
 
 .quantum span {
   display: block;
-  min-width: 2.25rem;
-  padding: 0.3rem 0.7rem;
+  min-width: 2.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 700;
   text-align: center;
   transition:
     background-color var(--duration-fast) var(--ease-out),
@@ -49,75 +46,78 @@
 }
 
 .quantum:hover span {
-  background: var(--paper);
+  background: rgb(255 255 255 / 0.06);
 }
 
 .quantum input:checked + span {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--gradient-hot);
+  color: var(--ink-on-hot);
 }
 
 .quantum input:focus-visible + span {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--amber);
   outline-offset: 2px;
 }
 
 .chart {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .row {
   display: grid;
-  grid-template-columns: 2rem minmax(0, 1fr);
+  grid-template-columns: 2.25rem minmax(0, 1fr);
   align-items: center;
 }
 
 .rowLabel {
-  color: var(--ink-soft);
+  font-weight: 600;
+  color: var(--text-soft);
 }
 
 .track {
   position: relative;
-  height: 1.25rem;
-  border-bottom: var(--rule-soft);
+  height: 1.5rem;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 0.04);
 }
 
 .slice {
   position: absolute;
-  top: 0.15rem;
-  bottom: 0.15rem;
-  background: var(--ink);
+  top: 0.2rem;
+  bottom: 0.2rem;
+  border-radius: 4px;
+  background: var(--gradient-hot);
 }
 
 /* Marca de chegada do processo na fila. */
 .arrival {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--accent);
+  top: -0.15rem;
+  bottom: -0.15rem;
+  width: 2px;
+  background: var(--text);
+  opacity: 0.6;
 }
 
 .axis {
   display: flex;
   justify-content: space-between;
-  margin-left: 2rem;
-  color: var(--ink-faint);
+  margin-left: 2.25rem;
+  color: var(--text-faint);
 }
 
 .caption {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem 1rem;
-  margin-top: 1.25rem;
-  padding-top: 0.75rem;
-  border-top: var(--rule-soft);
-  color: var(--ink-soft);
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-soft);
 }
 
 .stats {
-  color: var(--ink);
+  font-weight: 700;
+  color: var(--text);
   font-variant-numeric: tabular-nums;
 }

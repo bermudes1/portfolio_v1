@@ -8,8 +8,8 @@ interface AwardProps {
 
 export function Award({ award }: AwardProps) {
   return (
-    <Section id="hackathon" index="03" title="Hackathon">
-      <div className={award.photo ? styles.withPhoto : styles.grid}>
+    <Section id="hackathon" index="03" title="hackathon">
+      <div className={styles.grid}>
         <div className={styles.text} data-reveal>
           <p className={styles.place} aria-hidden="true">
             {award.place}
@@ -21,8 +21,14 @@ export function Award({ award }: AwardProps) {
 
         {award.photo && (
           <figure className={styles.figure} data-reveal>
-            <img src={award.photo.src} alt={award.photo.alt} loading="lazy" decoding="async" />
-            <figcaption>{award.photo.alt}</figcaption>
+            <img
+              src={award.photo.src}
+              alt={award.photo.alt}
+              width={1600}
+              height={1200}
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
         )}
       </div>

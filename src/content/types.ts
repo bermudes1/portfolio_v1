@@ -6,6 +6,16 @@ export interface Link {
 /** Período em texto livre, do jeito que vai aparecer na tela ("jun 2025 a ago 2026"). */
 export type Period = string
 
+export interface Photo {
+  src: string
+  alt: string
+}
+
+export interface Stat {
+  value: string
+  label: string
+}
+
 export interface Experience {
   role: string
   org: string
@@ -33,11 +43,6 @@ export interface Project {
   links: Link[]
 }
 
-export interface Photo {
-  src: string
-  alt: string
-}
-
 export interface Award {
   place: string
   title: string
@@ -47,19 +52,26 @@ export interface Award {
   photo?: Photo
 }
 
+export type SkillIcon = 'code' | 'data' | 'web' | 'tools'
+
 export interface SkillGroup {
   title: string
+  icon: SkillIcon
   items: string[]
 }
 
 export interface Profile {
   name: string
   fullName: string
-  role: string
-  /** Linha curta ao lado do quadrado vermelho na abertura. */
-  status: string
+  greeting: string
+  headline: string
   intro: string
-  portrait: Photo
+  /** Linha curta ao lado do ponto aceso na abertura. */
+  status: string
+  /** Recorte com fundo transparente, usado na abertura. */
+  heroImage: Photo
+  aboutImage: Photo
+  stats: Stat[]
   location: { label: string; timeZone: string }
   about: string[]
   experience: Experience[]

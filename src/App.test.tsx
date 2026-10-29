@@ -7,7 +7,9 @@ describe('App', () => {
   it('mostra o nome como título principal', () => {
     render(<App />)
 
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(profile.name)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      new RegExp(profile.name, 'i'),
+    )
   })
 
   it('tem um link do menu para cada seção existente', () => {

@@ -1,4 +1,5 @@
 import { LocalTime } from '../features/clock/LocalTime'
+import { useScrolledPast } from '../hooks/useScrolledPast'
 import styles from './Header.module.css'
 
 export interface NavItem {
@@ -7,16 +8,19 @@ export interface NavItem {
 }
 
 interface HeaderProps {
-  name: string
+  monogram: string
   nav: NavItem[]
   location: { label: string; timeZone: string }
 }
 
-export function Header({ name, nav, location }: HeaderProps) {
+export function Header({ monogram, nav, location }: HeaderProps) {
+  // Sobre o gradiente o cabeçalho fica transparente; depois ganha fundo escuro.
+  const solid = useScrolledPast(24)
+
   return (
-    <header className={styles.header}>
-      <a href="#inicio" className={styles.mark}>
-        {name}
+    <header className={styles.header} data-solid={solid}>
+      <a href="#inicio" className={styles.mark} aria-label="Início">
+        {monogram}
       </a>
       <nav aria-label="Seções" className={styles.nav}>
         <ul role="list">

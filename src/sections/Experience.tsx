@@ -8,23 +8,28 @@ interface ExperienceProps {
 
 export function Experience({ items }: ExperienceProps) {
   return (
-    <Section id="experiencia" index="02" title="Experiência">
-      <ol role="list" className={styles.list}>
+    <Section id="experiencia" index="02" title="experiência">
+      <ol role="list" className={styles.timeline}>
         {items.map((item) => (
-          <li key={`${item.org}-${item.role}`} className={styles.item} data-reveal>
-            <p className={styles.period}>
+          <li
+            key={`${item.org}-${item.role}`}
+            className={styles.item}
+            data-current={item.current ?? false}
+            data-reveal
+          >
+            <div className={styles.meta}>
+              <p className={styles.period}>{item.period}</p>
               {item.current && <span className={styles.now}>agora</span>}
-              {item.period}
-            </p>
-            <div>
+            </div>
+            <div className={styles.card}>
               <h3 className={styles.role}>{item.role}</h3>
               <p className={styles.org}>{item.org}</p>
+              <ul className={styles.description}>
+                {item.description.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
             </div>
-            <ul className={styles.description}>
-              {item.description.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
           </li>
         ))}
       </ol>

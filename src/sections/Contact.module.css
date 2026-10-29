@@ -1,5 +1,36 @@
+.wrapper {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 0 var(--gutter) clamp(4rem, 8vw, 7rem);
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 6vw, 5rem);
+  border-radius: calc(var(--radius) * 2);
+  background: var(--gradient-hot);
+  color: var(--ink-on-hot);
+}
+
+.index {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-size: var(--step-3);
+  font-weight: 800;
+  font-stretch: 118%;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
 .pitch {
   max-width: 40ch;
+  margin-top: 1rem;
   font-size: var(--step-1);
   line-height: 1.4;
 }
@@ -7,38 +38,31 @@
 .email {
   display: inline-block;
   margin-top: 2rem;
-  font-size: var(--step-3);
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  background: var(--ink-on-hot);
+  color: #fff;
+  font-size: var(--step-1);
   font-weight: 700;
-  font-stretch: 80%;
-  line-height: 1;
-  letter-spacing: -0.03em;
   overflow-wrap: anywhere;
   text-decoration: none;
-  background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 3px no-repeat;
-  transition: background-size 280ms var(--ease-out);
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
-.email:hover,
-.email:focus-visible {
-  background-size: 100% 3px;
+.email:hover {
+  transform: translateY(-2px);
 }
 
 .links {
   display: flex;
-  gap: 2rem;
-  margin-top: 2.5rem;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
 }
 
 .links a {
   text-decoration: none;
-  border-bottom: var(--rule);
-}
-
-.links a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+  border-bottom: 2px solid currentColor;
 }
 
 @media (prefers-reduced-motion: reduce) {

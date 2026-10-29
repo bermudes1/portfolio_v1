@@ -1,3 +1,4 @@
+import { Icon } from '../components/Icon'
 import { Section } from '../components/Section'
 import type { Profile } from '../content/types'
 import styles from './Skills.module.css'
@@ -8,23 +9,29 @@ interface SkillsProps {
 
 export function Skills({ profile }: SkillsProps) {
   return (
-    <Section id="competencias" index="05" title="Competências">
-      <dl className={styles.grid}>
+    <Section id="competencias" index="05" title="competências">
+      <ul role="list" className={styles.grid}>
         {profile.skills.map((group) => (
-          <div key={group.title} className={styles.group} data-reveal>
-            <dt className={styles.label}>{group.title}</dt>
-            {group.items.map((item) => (
-              <dd key={item}>{item}</dd>
-            ))}
-          </div>
+          <li key={group.title} className={styles.card} data-reveal>
+            <Icon name={group.icon} className={styles.icon} />
+            <h3 className={styles.title}>{group.title}</h3>
+            <ul role="list" className={styles.items}>
+              {group.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </li>
         ))}
-        <div className={styles.group} data-reveal>
-          <dt className={styles.label}>Certificados</dt>
+      </ul>
+
+      <div className={styles.certs} data-reveal>
+        <h3 className={styles.certsTitle}>Certificados</h3>
+        <ul role="list">
           {profile.certifications.map((item) => (
-            <dd key={item}>{item}</dd>
+            <li key={item}>{item}</li>
           ))}
-        </div>
-      </dl>
+        </ul>
+      </div>
     </Section>
   )
 }

@@ -1,59 +1,110 @@
 .header {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  inset: 0 0 auto;
   z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem var(--gutter);
-  background: var(--paper);
-  border-bottom: var(--rule);
-  font-family: var(--font-mono);
+  gap: 1.5rem;
+  padding: 1rem var(--gutter);
   font-size: var(--step--1);
+  transition:
+    background-color 240ms var(--ease-out),
+    border-color 240ms var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.header[data-solid='true'] {
+  background: rgb(14 12 11 / 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
 }
 
 .mark {
-  font-weight: 600;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 800;
+  font-stretch: 120%;
+  letter-spacing: -0.04em;
   text-decoration: none;
-  white-space: nowrap;
+}
+
+.nav {
+  margin-left: auto;
 }
 
 .nav ul {
   display: flex;
-  gap: clamp(0.9rem, 2vw, 2rem);
+  gap: clamp(1rem, 2.4vw, 2.25rem);
 }
 
 .nav a {
+  position: relative;
+  font-weight: 500;
   text-decoration: none;
-  color: var(--ink-soft);
-  transition: color var(--duration-fast) var(--ease-out);
+  opacity: 0.85;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -0.3rem;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms var(--ease-out);
 }
 
 .nav a:hover {
-  color: var(--ink);
-  text-decoration: underline;
+  opacity: 1;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
 }
 
 .clock {
-  color: var(--ink-soft);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .clock time {
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
+  font-weight: 700;
 }
 
 @media (max-width: 47.99em) {
   .header {
     flex-wrap: wrap;
-    row-gap: 0.5rem;
+    row-gap: 0.6rem;
+  }
+
+  .clock {
+    margin-left: auto;
   }
 
   .nav {
     order: 3;
     width: 100%;
+    margin-left: 0;
     overflow-x: auto;
+  }
+
+  .nav ul {
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav a::after {
+    transition: none;
   }
 }

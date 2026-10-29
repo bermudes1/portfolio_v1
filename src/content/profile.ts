@@ -10,13 +10,21 @@ const asset = (file: string) => `${import.meta.env.BASE_URL}${file}`
 export const profile: Profile = {
   name: 'Felipe Bermudes',
   fullName: 'Felipe Bermudes de Oliveira Leite',
-  role: 'Ciência da Computação · PUC-Rio',
+  greeting: 'oi, eu sou',
+  headline: 'Estudo computação e trabalho com dados e IA.',
+  intro: 'Ciência da Computação na PUC-Rio, agora em intercâmbio na TU Darmstadt.',
   status: 'Procurando estágio em tecnologia',
-  intro:
-    'Estudo Ciência da Computação na PUC-Rio e estou em intercâmbio na TU Darmstadt. ' +
-    'Trabalho com dados e IA, e passei pela base da computação escrevendo C ' +
-    'até entender o que o sistema operacional faz com o meu código.',
-  portrait: { src: asset('felipe.jpg'), alt: 'Foto de Felipe Bermudes' },
+  heroImage: { src: asset('felipe-recorte.webp'), alt: 'Felipe Bermudes' },
+  aboutImage: {
+    src: asset('felipe-mosel.jpg'),
+    alt: 'Felipe sorrindo, apoiado num muro de pedra com um rio e uma cidade pequena ao fundo',
+  },
+  stats: [
+    { value: '3', label: 'experiências profissionais' },
+    { value: '2', label: 'universidades, no Brasil e na Alemanha' },
+    { value: '3º', label: 'lugar no primeiro hackathon' },
+    { value: '3', label: 'idiomas' },
+  ],
   location: { label: 'Darmstadt, Alemanha', timeZone: 'Europe/Berlin' },
   about: [
     'Entrei na PUC-Rio em 2024 e a previsão de formatura é 2028.1. Desde 2025 ' +
@@ -147,14 +155,16 @@ export const profile: Profile = {
   skills: [
     {
       title: 'Linguagens',
+      icon: 'code',
       items: ['Python', 'C', 'C++', 'SQL', 'SAS', 'TypeScript'],
     },
     {
       title: 'Dados',
+      icon: 'data',
       items: ['Spark', 'Análise estatística', 'Sistemas de recomendação'],
     },
-    { title: 'Web', items: ['React', 'Django', 'Django REST Framework'] },
-    { title: 'Ferramentas', items: ['Git', 'Linux', 'Make', 'Vite', 'Vitest'] },
+    { title: 'Web', icon: 'web', items: ['React', 'Django', 'Django REST Framework'] },
+    { title: 'Ferramentas', icon: 'tools', items: ['Git', 'Linux', 'Make', 'Vite', 'Vitest'] },
   ],
   certifications: ['IBM · Python for Data Science', 'IBM · SQL and Relational Databases'],
   languages: [

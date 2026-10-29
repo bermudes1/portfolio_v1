@@ -31,13 +31,13 @@ Outros comandos:
 ```
 src/
   content/      texto do site (profile.ts) e os tipos dele
-  components/   peças reaproveitadas: Section, TagList
+  components/   peças reaproveitadas: Section, TagList, Icon
   layout/       cabeçalho e rodapé
   sections/     uma seção da página por arquivo
   features/
     scheduler/  simulação Round-Robin (lógica pura + figura interativa)
     clock/      relógio com a hora de Darmstadt no cabeçalho
-  hooks/        useReveal, as animações de entrada com GSAP
+  hooks/        animações de entrada com GSAP e estado de rolagem
   styles/       tokens de cor, tipo e espaçamento, e o CSS global
 ```
 
@@ -49,6 +49,7 @@ Cada componente tem o próprio CSS Module. As cores, fontes e tamanhos ficam em 
 
 ## Decisões
 
-- As fontes (Bricolage Grotesque e JetBrains Mono) vêm do npm via Fontsource, então o site não depende do Google Fonts.
+- A fonte é a Archivo, variável na largura: os títulos usam a versão larga e o texto corrido a normal. Ela vem do npm via Fontsource, então o site não depende do Google Fonts.
+- A foto da abertura é um recorte com fundo transparente (`public/felipe-recorte.webp`), feito com o rembg a partir da foto original.
 - As animações usam GSAP com `matchMedia`. Se o sistema estiver com movimento reduzido, nada se mexe e o conteúdo já aparece no lugar.
 - O CI (`.github/workflows/ci.yml`) roda lint, formatação, tipos, testes e build em todo push e pull request. Na `main`, se tudo passar, o build vai para a branch `gh-pages`, que é a que o GitHub Pages serve.

@@ -11,6 +11,7 @@ import { Experience } from './sections/Experience'
 import { Hero } from './sections/Hero'
 import { Projects } from './sections/Projects'
 import { Skills } from './sections/Skills'
+import { Stats } from './sections/Stats'
 
 const NAV: NavItem[] = [
   { href: '#sobre', label: 'Sobre' },
@@ -28,9 +29,10 @@ export function App() {
       <a href="#sobre" className="skip-link">
         Pular para o conteúdo
       </a>
-      <Header name={profile.name} nav={NAV} location={profile.location} />
+      <Header monogram="fb" nav={NAV} location={profile.location} />
       <main ref={main}>
         <Hero profile={profile} />
+        <Stats stats={profile.stats} />
         <About profile={profile} />
         <Experience items={profile.experience} />
         <Award award={profile.award} />
