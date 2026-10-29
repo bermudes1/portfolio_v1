@@ -1,0 +1,72 @@
+.grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.text {
+  display: grid;
+  gap: 1.1em;
+  max-width: 60ch;
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.text p:first-child::first-letter {
+  font-weight: 700;
+}
+
+.label {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 400;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.education {
+  display: grid;
+  margin-bottom: 2.5rem;
+  border-top: var(--rule-soft);
+}
+
+.education li {
+  padding-block: 1rem;
+  border-bottom: var(--rule-soft);
+}
+
+.school {
+  font-weight: 650;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.meta {
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.languages div {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.4rem;
+  border-bottom: var(--rule-soft);
+}
+
+.languages dd {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+@media (min-width: 72em) {
+  .grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--gutter);
+  }
+}

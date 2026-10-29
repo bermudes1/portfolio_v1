@@ -76,7 +76,12 @@ export function roundRobin(jobs: readonly Job[], quantum: number): Schedule {
   const stats = jobs.map((job) => {
     const end = finishedAt.get(job.id) ?? job.arrival
     const turnaround = end - job.arrival
-    return { id: job.id, finishedAt: end, turnaround, waiting: turnaround - job.burst }
+    return {
+      id: job.id,
+      finishedAt: end,
+      turnaround,
+      waiting: turnaround - job.burst,
+    }
   })
 
   const averageWaiting =
@@ -94,4 +99,13 @@ function pushSlice(slices: Slice[], slice: Slice) {
   } else {
     slices.push(slice)
   }
+}
+
+/** Quantas vezes a CPU passou de um processo para outro. Ociosidade não conta. */
+export function countContextSwitches(slices: readonly Slice[]): number {
+  const running = slices.filter((slice) => slice.jobId !== null)
+  return running.reduce(
+    (count, slice, i) => (i > 0 && running[i - 1].jobId !== slice.jobId ? count + 1 : count),
+    0,
+  )
 }

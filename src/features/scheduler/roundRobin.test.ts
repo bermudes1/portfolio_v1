@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { roundRobin, type Job } from './roundRobin'
+import { countContextSwitches, roundRobin, type Job } from './roundRobin'
 
-const job = (id: string, burst: number, arrival = 0): Job => ({ id, arrival, burst })
+const job = (id: string, burst: number, arrival = 0): Job => ({
+  id,
+  arrival,
+  burst,
+})
 
 describe('roundRobin', () => {
   it('alterna os processos respeitando o quantum', () => {
@@ -49,10 +53,29 @@ describe('roundRobin', () => {
   })
 
   it('não quebra com a lista vazia', () => {
-    expect(roundRobin([], 2)).toEqual({ slices: [], stats: [], averageWaiting: 0, totalTime: 0 })
+    expect(roundRobin([], 2)).toEqual({
+      slices: [],
+      stats: [],
+      averageWaiting: 0,
+      totalTime: 0,
+    })
   })
 
   it.each([0, -1, 1.5])('rejeita quantum inválido (%s)', (quantum) => {
     expect(() => roundRobin([job('A', 1)], quantum)).toThrow(RangeError)
+  })
+})
+
+describe('countContextSwitches', () => {
+  it('conta só as trocas entre processos diferentes', () => {
+    const { slices } = roundRobin([job('A', 3), job('B', 2)], 1)
+
+    expect(countContextSwitches(slices)).toBe(4)
+  })
+
+  it('ignora o tempo ocioso entre dois processos', () => {
+    const { slices } = roundRobin([job('A', 1), job('B', 1, 3)], 2)
+
+    expect(countContextSwitches(slices)).toBe(1)
   })
 })
