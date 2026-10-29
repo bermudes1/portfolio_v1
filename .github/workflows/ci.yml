@@ -30,6 +30,8 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: 'true'
+      # O Pages mostra 404.html para qualquer caminho que não existe.
+      - run: cp dist/index.html dist/404.html
       - uses: actions/upload-artifact@v4
         if: github.ref == 'refs/heads/main'
         with:
